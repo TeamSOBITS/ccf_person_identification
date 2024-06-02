@@ -227,7 +227,8 @@ public:
    */
   std::vector<cv::Mat> extract(const cv::Mat& bgr, const cv::Mat& gray) const override {
     cv::Mat rgb;
-    cv::cvtColor(bgr, rgb, CV_BGR2RGB);
+    cv::cvtColor(bgr, rgb, cv::COLOR_BGR2RGB);
+    // cv::cvtColor(bgr, rgb, CV_BGR2RGB);
 
     std::vector<cv::Mat> layers = subnet(rgb);
 

@@ -184,7 +184,8 @@ public:
 
           cv::Mat feat;
           if(i != num_channels) {
-            cv::cvtColor(feature_maps[i], feat, CV_GRAY2BGR);
+            cv::cvtColor(feature_maps[i], feat, cv::COLOR_GRAY2BGR);
+            // cv::cvtColor(feature_maps[i], feat, CV_GRAY2BGR);
           } else {
             feat = feature_maps.back().clone();
           }
