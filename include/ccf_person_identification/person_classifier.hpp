@@ -3,19 +3,21 @@
 
 #include <vector>
 #include <ccf_person_identification/online_classifier.hpp>
-#include <ccf_person_identification/face/face_classifier.hpp>
+// #include <ccf_person_identification/face/face_classifier.hpp>
 #include <ccf_person_identification/body/body_classifier.hpp>
 
 
 namespace ccf_person_classifier {
 
-class PersonInput : public BodyInput, public FaceInput {
+class PersonInput : public BodyInput {
+// class PersonInput : public BodyInput, public FaceInput {
 public:
     virtual ~PersonInput() override {}
     using Ptr = std::shared_ptr<PersonInput>;
 };
 
-class PersonFeatures : public BodyFeatures, public FaceFeatures {
+class PersonFeatures : public BodyFeatures {
+// class PersonFeatures : public BodyFeatures, public FaceFeatures {
 public:
     virtual ~PersonFeatures() override {}
     using Ptr = std::shared_ptr<PersonFeatures>;
@@ -26,18 +28,20 @@ class PersonClassifier : public OnlineClassifier {
 public:
     PersonClassifier(ros::NodeHandle& nh)
     {
-        if(nh.param<bool>("use_face", true)) {
-            classifiers.push_back(std::make_shared<FaceClassifier>(nh));
-        }
-        if(nh.param<bool>("use_body", true)) {
-            classifiers.push_back(std::make_shared<BodyClassifier>(nh));
-        }
+        classifiers.push_back(std::make_shared<BodyClassifier>(nh));
+        // if(nh.param<bool>("use_face", true)) {
+        //     classifiers.push_back(std::make_shared<FaceClassifier>(nh));
+        // }
+        // if(nh.param<bool>("use_body", true)) {
+        //     classifiers.push_back(std::make_shared<BodyClassifier>(nh));
+        // }
     }
 
     virtual ~PersonClassifier() override {}
 
     virtual std::string name() const override {
-        return "face+body";
+        return "body";
+        // return "face+body";
     }
 
     std::vector<std::string> classifierNames() const {
