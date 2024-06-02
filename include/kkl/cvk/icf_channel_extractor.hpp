@@ -54,7 +54,8 @@ public:
 
   std::vector<cv::Mat> extract(const cv::Mat& rgb, const cv::Mat& gray) const override {
     cv::Mat hsv;
-    cv::cvtColor(rgb, hsv, CV_BGR2HSV);
+    cv::cvtColor(rgb, hsv, cv::COLOR_BGR2HSV);
+    // cv::cvtColor(rgb, hsv, CV_BGR2HSV);
 
     std::vector<cv::Mat> channels;
     cv::split(hsv, channels);
@@ -81,7 +82,8 @@ public:
 
   std::vector<cv::Mat> extract(const cv::Mat& rgb, const cv::Mat& gray) const override {
     cv::Mat hsv;
-    cv::cvtColor(rgb, hsv, CV_BGR2Luv);
+    cv::cvtColor(rgb, hsv, cv::COLOR_BGR2Luv);
+    // cv::cvtColor(rgb, hsv, CV_BGR2Luv);
 
     std::vector<cv::Mat> channels;
     cv::split(hsv, channels);
