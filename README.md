@@ -1,6 +1,6 @@
 # ccf_person_identification
 
-This package is an implementation of person identification based on the combination of Convolutional Channel Features and Online boosting. It takes advantage of deep feature representation while adapting the person classifier to a specific target person.
+This package is an implementation of person identification based on the combination of Convolutional Channel Features and Online boosting. It takes advantage of deep feature representation while adapting the person classifier to a specific target person.(Fixed for sobit_follower package)
 
 ## Example
 

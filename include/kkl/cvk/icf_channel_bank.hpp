@@ -49,8 +49,7 @@ public:
 
   std::vector<cv::Mat> extract(const cv::Mat& rgb) const {
     cv::Mat gray;
-    cv::cvtColor(rgb, gray, cv::COLOR_BGR2GRAY);
-    // cv::cvtColor(rgb, gray, CV_BGR2GRAY);
+    cv::cvtColor(rgb, gray, CV_BGR2GRAY);
 
     return extract(rgb, gray);
   }

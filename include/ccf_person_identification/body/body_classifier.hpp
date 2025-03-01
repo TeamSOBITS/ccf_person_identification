@@ -58,7 +58,7 @@ public:
         std::vector<BodyFeatures::Ptr> init_samples;
         int num_selectors = nh.param<int>("num_selectors", 15);
         int num_weak_classifiers = nh.param<int>("num_weak_classifiers", 15);
-        boosting.reset(new kkl::ml::OnlineBoosting<BodyFeatures::Ptr>(generator, num_selectors, num_weak_classifiers, init_labels, init_samples, 2, 32));
+        boosting.reset(new kkl::ml::OnlineBoosting<BodyFeatures::Ptr>(generator, num_selectors, num_weak_classifiers, init_labels, init_samples, 3, 32));
 
     }
     virtual ~BodyClassifier() override {}
@@ -184,8 +184,7 @@ public:
 
           cv::Mat feat;
           if(i != num_channels) {
-            cv::cvtColor(feature_maps[i], feat, cv::COLOR_GRAY2BGR);
-            // cv::cvtColor(feature_maps[i], feat, CV_GRAY2BGR);
+            cv::cvtColor(feature_maps[i], feat, CV_GRAY2BGR);
           } else {
             feat = feature_maps.back().clone();
           }
